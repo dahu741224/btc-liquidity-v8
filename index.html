@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC V8 流動性面板</title>
+<style>
+body{font-family:sans-serif;background:#0b0e11;color:#eaecef;padding:20px}
+.container{max-width:900px;margin:auto}
+.card{background:#1e2329;padding:15px;margin:10px 0;border-radius:10px}
+input,select{width:100%;padding:8px;margin-top:5px;border-radius:6px;border:none}
+button{width:100%;padding:12px;margin-top:15px;font-weight:bold;background:#f0b90b}
+.result{background:#111;padding:15px;margin-top:15px;border-radius:10px}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>🔥 BTC V8 流動性預測面板</h2>
+
+<div class="card">
+價格<input id="price">
+上方清算<input id="top">
+下方清算<input id="bottom">
+
+CVD<select id="cvd">
+<option>偏多</option><option>偏空</option><option>背離</option>
+</select>
+
+OI<select id="oi">
+<option>增加</option><option>減少</option><option>不變</option>
+</select>
+
+Funding<select id="funding">
+<option>偏多</option><option>偏空</option><option>中性</option>
+</select>
+
+結構<select id="structure">
+<option>偏多</option><option>偏空</option><option>震盪</option>
+</select>
+
+時段<select id="session">
+<option>亞洲盤</option><option>歐洲盤</option><option>美盤</option>
+</select>
+
+<button onclick="calc()">開始分析</button>
+</div>
+
+<div class="result" id="output">等待輸入資料...</div>
+
+</div>
+
+<script>
+function calc(){
+let price=parseFloat(document.getElementById('price').value);
+let top=parseFloat(document.getElementById('top').value);
+let bottom=parseFloat(document.getElementById('bottom').value);
+
+let upDist=top-price;
+let downDist=price-bottom;
+
+let result = upDist < downDist ? "👉 較可能先掃上方流動性" : "👉 較可能先掃下方流動性";
+
+document.getElementById('output').innerText = result;
+}
+</script>
+
+</body>
+</html>
