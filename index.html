@@ -2,66 +2,116 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTC V8 流動性面板</title>
+<title>Marcus Trading OS V9</title>
 <style>
-body{font-family:sans-serif;background:#0b0e11;color:#eaecef;padding:20px}
-.container{max-width:900px;margin:auto}
-.card{background:#1e2329;padding:15px;margin:10px 0;border-radius:10px}
-input,select{width:100%;padding:8px;margin-top:5px;border-radius:6px;border:none}
-button{width:100%;padding:12px;margin-top:15px;font-weight:bold;background:#f0b90b}
-.result{background:#111;padding:15px;margin-top:15px;border-radius:10px}
+body{font-family:sans-serif;background:#0b0f14;color:#fff;padding:20px}
+h1{color:#f0b90b}
+.box{border:1px solid #333;padding:15px;margin:10px 0;border-radius:10px}
+input,button{padding:10px;margin:5px;border-radius:5px;border:none}
+button{background:#f0b90b;color:#000;font-weight:bold;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{border:1px solid #333;padding:8px;text-align:center}
 </style>
 </head>
+
 <body>
-<div class="container">
-<h2>🔥 BTC V8 流動性預測面板</h2>
 
-<div class="card">
-價格<input id="price">
-上方清算<input id="top">
-下方清算<input id="bottom">
+<h1>⚔️ Marcus Trading OS V9</h1>
 
-CVD<select id="cvd">
-<option>偏多</option><option>偏空</option><option>背離</option>
-</select>
-
-OI<select id="oi">
-<option>增加</option><option>減少</option><option>不變</option>
-</select>
-
-Funding<select id="funding">
-<option>偏多</option><option>偏空</option><option>中性</option>
-</select>
-
-結構<select id="structure">
-<option>偏多</option><option>偏空</option><option>震盪</option>
-</select>
-
-時段<select id="session">
-<option>亞洲盤</option><option>歐洲盤</option><option>美盤</option>
-</select>
-
-<button onclick="calc()">開始分析</button>
+<div class="box">
+<h2>輸入區</h2>
+價格 <input id="price"><br>
+上方流動性 <input id="top"><br>
+下方流動性 <input id="bottom"><br>
+<button onclick="analyze()">開始分析</button>
 </div>
 
-<div class="result" id="output">等待輸入資料...</div>
+<div class="box">
+<h2>AI決策</h2>
+方向：<span id="bias"></span><br>
+Entry：<span id="entry"></span><br>
+Stop：<span id="stop"></span><br>
+TP：<span id="tp"></span><br>
+</div>
 
+<div class="box">
+<h2>交易紀錄</h2>
+<button onclick="addTrade()">新增紀錄</button>
+<table id="table">
+<tr>
+<th>日期</th>
+<th>方向</th>
+<th>Entry</th>
+<th>Stop</th>
+<th>TP</th>
+<th>結果</th>
+</tr>
+</table>
+</div>
+
+<div class="box">
+<h2>統計</h2>
+勝率：<span id="winRate">0%</span><br>
+總交易：<span id="total">0</span>
 </div>
 
 <script>
-function calc(){
-let price=parseFloat(document.getElementById('price').value);
-let top=parseFloat(document.getElementById('top').value);
-let bottom=parseFloat(document.getElementById('bottom').value);
 
-let upDist=top-price;
-let downDist=price-bottom;
+function analyze(){
+let price=parseFloat(document.getElementById("price").value)
+let top=parseFloat(document.getElementById("top").value)
+let bottom=parseFloat(document.getElementById("bottom").value)
 
-let result = upDist < downDist ? "👉 較可能先掃上方流動性" : "👉 較可能先掃下方流動性";
-
-document.getElementById('output').innerText = result;
+if(price < bottom){
+document.getElementById("bias").innerText="LONG"
+document.getElementById("entry").innerText=bottom
+document.getElementById("stop").innerText=bottom-300
+document.getElementById("tp").innerText=top
+}else{
+document.getElementById("bias").innerText="SHORT"
+document.getElementById("entry").innerText=top
+document.getElementById("stop").innerText=top+300
+document.getElementById("tp").innerText=bottom
 }
+}
+
+function addTrade(){
+let table=document.getElementById("table")
+let row=table.insertRow()
+
+row.innerHTML=`
+<td>${new Date().toLocaleDateString()}</td>
+<td>${document.getElementById("bias").innerText}</td>
+<td>${document.getElementById("entry").innerText}</td>
+<td>${document.getElementById("stop").innerText}</td>
+<td>${document.getElementById("tp").innerText}</td>
+<td onclick="editResult(this)">點擊輸入</td>
+`
+
+updateStats()
+}
+
+function editResult(cell){
+let result=prompt("輸入結果（例如 +1R / -1R）")
+cell.innerText=result
+updateStats()
+}
+
+function updateStats(){
+let table=document.getElementById("table")
+let wins=0
+let total=table.rows.length-1
+
+for(let i=1;i<table.rows.length;i++){
+let result=table.rows[i].cells[5].innerText
+if(result.includes("+")) wins++
+}
+
+document.getElementById("total").innerText=total
+document.getElementById("winRate").innerText=
+total>0 ? ((wins/total)*100).toFixed(1)+"%" : "0%"
+}
+
 </script>
 
 </body>
