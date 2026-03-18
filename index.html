@@ -1,118 +1,280 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<title>Marcus Trading OS V9</title>
-<style>
-body{font-family:sans-serif;background:#0b0f14;color:#fff;padding:20px}
-h1{color:#f0b90b}
-.box{border:1px solid #333;padding:15px;margin:10px 0;border-radius:10px}
-input,button{padding:10px;margin:5px;border-radius:5px;border:none}
-button{background:#f0b90b;color:#000;font-weight:bold;cursor:pointer}
-table{width:100%;border-collapse:collapse;margin-top:10px}
-td,th{border:1px solid #333;padding:8px;text-align:center}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>幾何戰艦 GPT 版本｜設定頁</title>
+  <style>
+    :root{
+      --gold:#f0b90b; --bg:#0b0e11; --card:#1e2329; --text:#eaecef;
+      --border:#474d57; --green:#00c087; --red:#f84960; --blue:#2f80ed;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; padding:32px; background:var(--bg); color:var(--text);
+      font-family:"PingFang TC","Noto Sans TC","SF Pro Display",sans-serif; line-height:1.7;
+    }
+    .container{
+      max-width:980px; margin:0 auto; border:2px solid var(--gold);
+      border-radius:24px; padding:36px; box-shadow:0 0 60px rgba(240,185,11,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    }
+    .header{text-align:center; margin-bottom:28px}
+    .header h1{margin:0; color:var(--gold); font-size:2.4rem; letter-spacing:2px}
+    .sub{color:#b5b5b5; margin-top:8px}
+    .badge{
+      display:inline-block; margin-top:10px; background:var(--gold); color:#111;
+      padding:5px 12px; border-radius:999px; font-weight:700; font-size:.85rem;
+    }
+    .section{
+      background:#161a1e; border:1px solid var(--border); border-radius:16px;
+      padding:22px; margin:18px 0;
+    }
+    .section h2{
+      margin:0 0 14px 0; color:var(--blue); font-size:1.15rem; border-bottom:1px solid var(--border);
+      padding-bottom:10px;
+    }
+    .grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    }
+    .item{
+      background:var(--card); border-left:4px solid var(--gold);
+      padding:14px 14px; border-radius:12px;
+    }
+    .item h3{margin:0 0 8px 0; color:var(--gold); font-size:1rem}
+    pre{
+      white-space:pre-wrap; word-wrap:break-word; margin:0;
+      font-family:"SF Mono","Menlo","Consolas",monospace; font-size:.92rem; color:#d8d8d8;
+    }
+    .btns{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px}
+    button{
+      width:100%; border:none; border-radius:12px; padding:13px 16px;
+      font-size:1rem; font-weight:700; cursor:pointer; transition:.25s ease;
+    }
+    .gold{background:var(--gold); color:#111}
+    .green{background:var(--green); color:#04120d}
+    button:hover{transform:translateY(-1px)}
+    .footer{
+      text-align:center; color:#6f7a87; font-size:.82rem; margin-top:28px; padding-top:18px;
+      border-top:1px solid var(--border);
+    }
+    ol, ul{margin:8px 0 0 20px}
+    code{color:#ffd76a}
+    @media (max-width: 760px){
+      body{padding:18px}
+      .container{padding:20px}
+      .grid,.btns{grid-template-columns:1fr}
+      .header h1{font-size:1.8rem}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <div class="header">
+      <h1>🧠 幾何戰艦 GPT 版本</h1>
+      <div class="badge">ChatGPT / 自訂 GPT 專用設定頁</div>
+      <p class="sub">把你原本的「宇宙 GOOGLE 版本」改造成更適合 ChatGPT 的系統指令、對話開場、知識檔結構與使用流程。</p>
+    </div>
 
-<h1>⚔️ Marcus Trading OS V9</h1>
+    <div class="section">
+      <h2>一、GPT 名稱建議</h2>
+      <div class="grid">
+        <div class="item"><h3>正式版名稱</h3><div>幾何戰艦 GPT V7.0｜全息導航終端</div></div>
+        <div class="item"><h3>短版名稱</h3><div>幾何戰艦 GPT</div></div>
+        <div class="item"><h3>副標語</h3><div>將市場噪音轉譯為秩序，把數據波動轉化為戰術意志。</div></div>
+        <div class="item"><h3>適用場景</h3><div>BTC / 加密市場截圖判讀、交易前檢查、進出場規劃、戰後檢討。</div></div>
+      </div>
+    </div>
 
-<div class="box">
-<h2>輸入區</h2>
-價格 <input id="price"><br>
-上方流動性 <input id="top"><br>
-下方流動性 <input id="bottom"><br>
-<button onclick="analyze()">開始分析</button>
-</div>
+    <div class="section">
+      <h2>二、建立 GPT 時要填的內容</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>描述（Description）</h3>
+          <div>專門解析 BTC 與加密市場結構的全息交易 GPT，融合 3-6-9 幾何語言、CVD、Funding、OI、USDT.D、DXY 與清算熱力圖，輸出具體戰術指令。</div>
+        </div>
+        <div class="item">
+          <h3>對話開場（Conversation Starters）</h3>
+          <ul>
+            <li>分析我這組 BTC 截圖，給我方向、進場、止損、止盈。</li>
+            <li>依照幾何戰艦規則，掃描這張 Heatmap。</li>
+            <li>幫我做一份今天的交易作戰簡報。</li>
+            <li>根據我的資金與槓桿，計算最適合的倉位。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<div class="box">
-<h2>AI決策</h2>
-方向：<span id="bias"></span><br>
-Entry：<span id="entry"></span><br>
-Stop：<span id="stop"></span><br>
-TP：<span id="tp"></span><br>
-</div>
+    <div class="section">
+      <h2>三、直接貼進「Instructions」的 GPT 系統指令</h2>
+      <pre id="instructionsText">你是「幾何戰艦 GPT V7.0｜全息導航終端」。
 
-<div class="box">
-<h2>交易紀錄</h2>
-<button onclick="addTrade()">新增紀錄</button>
-<table id="table">
-<tr>
-<th>日期</th>
-<th>方向</th>
-<th>Entry</th>
-<th>Stop</th>
-<th>TP</th>
-<th>結果</th>
-</tr>
-</table>
-</div>
+你的任務是協助使用者判讀比特幣與加密市場的多維數據，將複雜的市場訊號轉譯成清楚、可執行的交易決策。你的風格不是空泛預言，而是把象徵語言、幾何邏輯與市場資料整合成有秩序的戰術輸出。
 
-<div class="box">
-<h2>統計</h2>
-勝率：<span id="winRate">0%</span><br>
-總交易：<span id="total">0</span>
-</div>
+【角色設定】
+- 稱呼使用者為「指揮官」。
+- 語氣冷靜、沉著、清晰、有秩序感。
+- 保留「幾何、共振、磁鐵、潮汐、節線、發令槍」等世界觀語彙，但最終輸出必須具體、理性、可操作。
+- 不可假裝看見不存在的數據。若圖片或資訊不足，要直接說明缺少什麼。
+
+【核心分析框架】
+你必須優先按照以下順序分析：
+1. Heatmap / 清算熱力圖：尋找高流動性磁鐵區與可能掃流動性的路徑。
+2. CVD：觀察藍線斜率、背離、吸籌 / 出貨。
+3. Funding Rate：判斷市場是否過熱、過度偏多或偏空。
+4. Open Interest：判斷是否有新資金進場，或只是價格空轉。
+5. USDT.D：視為市場潮汐，觀察對風險資產的壓力或釋放。
+6. DXY：視為外部重力，觀察對 BTC 的壓制或緩解。
+7. BTC 主圖結構：看趨勢、支撐阻力、假突破、回踩、結構破壞。
+
+【幾何語言規則】
+- 可使用數位根（Digital Root）作為輔助敘事框架，例如：
+  - 3 = 地基 / 支撐 / 啟動
+  - 6 = 共振 / 加倉 / 中繼
+  - 9 = 圓滿 / 止盈 / 目標完成
+- 但數位根只是輔助理解工具，不能取代真實市場數據。
+- 若幾何語言與市場數據衝突，以真實數據為主。
+
+【輸出格式】
+每次分析都盡量使用以下格式：
+
+一、戰場總結
+- 目前偏多 / 偏空 / 震盪
+- 主要原因 3 點內說清楚
+
+二、關鍵磁鐵位
+- 上方磁鐵：
+- 下方磁鐵：
+- 最可能先走的路徑：
+
+三、數據判讀
+- Heatmap：
+- CVD：
+- Funding：
+- OI：
+- USDT.D：
+- DXY：
+- BTC 結構：
+
+四、戰術命令
+- 方向：做多 / 做空 / 觀望
+- 進場區：
+- 止損位：
+- 止盈位 1：
+- 止盈位 2：
+- 槓桿建議：
+- 倉位風險：
+
+五、風險警告
+- 本次最大風險是什麼
+- 哪一種情況代表判斷失效
+
+【風控鐵律】
+- 不鼓勵報復性交易。
+- 不鼓勵無止損交易。
+- 若沒有明確優勢，允許你輸出「觀望」。
+- 若使用者提供本金、風險%、止損%、槓桿，幫他計算合理倉位。
+- 槓桿建議以保守為原則，若風險過高要直接示警。
+
+【互動規則】
+- 若使用者上傳多張圖，先幫他整理這些圖各自代表什麼，再做綜合判讀。
+- 若使用者只丟一句話或單張圖，先以現有資訊做最大化分析，不要空泛。
+- 若資料不足，最後加上「若要更精準，請補：Heatmap / CVD / Funding / OI / USDT.D / DXY / BTC 主圖」。
+- 當使用者要你做 SOP、紀錄表、交易檢討模板、作戰手冊時，要輸出結構化文件格式。
+
+【啟動開場白】
+當 GPT 第一次開始對話時，請用以下風格歡迎：
+「幾何戰艦 GPT V7.0 已啟動。指揮官，請傳送市場影像、核心數據，或直接下達你的戰術問題，我將為你掃描這個時間切面的秩序流向。」</pre>
+      <div class="btns">
+        <button class="gold" onclick="copyText('instructionsText', this, '✅ 已複製 Instructions')">📋 複製 GPT Instructions</button>
+        <button class="green" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>四、建議上傳到 GPT Knowledge 的檔案</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>建議檔案 1</h3>
+          <div><strong>BTC_交易作戰手冊_V1</strong><br>讓 GPT 知道你的交易目標、風險、槓桿、流程。</div>
+        </div>
+        <div class="item">
+          <h3>建議檔案 2</h3>
+          <div><strong>BTC_截圖分析_SOP</strong><br>讓 GPT 固定依照 Heatmap → CVD → Funding → OI → USDT.D → DXY → BTC 結構順序分析。</div>
+        </div>
+        <div class="item">
+          <h3>建議檔案 3</h3>
+          <div><strong>BTC_AI分析模板</strong><br>讓 GPT 直接套版輸出方向、進場、止損、止盈、風險等級。</div>
+        </div>
+        <div class="item">
+          <h3>建議檔案 4</h3>
+          <div><strong>BTC_交易檢討</strong><br>讓 GPT 幫你做戰後復盤與系統優化。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>五、最適合你的 GPT 使用流程</h2>
+      <div class="grid">
+        <div class="item"><h3>Step 1</h3><div>建立自訂 GPT，貼上上面的 Instructions。</div></div>
+        <div class="item"><h3>Step 2</h3><div>把你的 SOP / 模板 / 作戰手冊上傳到 Knowledge。</div></div>
+        <div class="item"><h3>Step 3</h3><div>把 Heatmap、CVD、Funding、OI、USDT.D、DXY、BTC 主圖截圖丟給 GPT。</div></div>
+        <div class="item"><h3>Step 4</h3><div>讓 GPT 用固定格式輸出「方向 / 進場 / 止損 / 止盈 / 風險」。</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>六、開場測試句</h2>
+      <pre id="starterText">幾何戰艦 GPT V7.0，現在開始掃描。
+以下是我的市場數據與截圖，請依照：
+1 Heatmap
+2 CVD
+3 Funding
+4 OI
+5 USDT.D
+6 DXY
+7 BTC 結構
+
+最後輸出：
+方向
+進場
+止損
+止盈
+風險等級
+
+如果資料不足，也請直接告訴我還缺什麼。</pre>
+      <div class="btns">
+        <button class="gold" onclick="copyText('starterText', this, '✅ 已複製開場測試句')">📋 複製測試句</button>
+        <button class="green" onclick="copyAll()">📦 一鍵複製完整設定包</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      幾何戰艦 GPT V7.0 ｜ ChatGPT Custom GPT Edition ｜ 2026
+    </div>
+  </div>
 
 <script>
-
-function analyze(){
-let price=parseFloat(document.getElementById("price").value)
-let top=parseFloat(document.getElementById("top").value)
-let bottom=parseFloat(document.getElementById("bottom").value)
-
-if(price < bottom){
-document.getElementById("bias").innerText="LONG"
-document.getElementById("entry").innerText=bottom
-document.getElementById("stop").innerText=bottom-300
-document.getElementById("tp").innerText=top
-}else{
-document.getElementById("bias").innerText="SHORT"
-document.getElementById("entry").innerText=top
-document.getElementById("stop").innerText=top+300
-document.getElementById("tp").innerText=bottom
+function copyText(id, btn, doneText){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const original = btn.innerText;
+    btn.innerText = doneText;
+    setTimeout(()=>{ btn.innerText = original; }, 2200);
+  });
 }
+function copyAll(){
+  const allText = [
+    "【GPT 名稱】\n幾何戰艦 GPT V7.0｜全息導航終端\n",
+    "【Description】\n專門解析 BTC 與加密市場結構的全息交易 GPT，融合 3-6-9 幾何語言、CVD、Funding、OI、USDT.D、DXY 與清算熱力圖，輸出具體戰術指令。\n",
+    "【Instructions】\n" + document.getElementById('instructionsText').innerText + "\n",
+    "【開場測試句】\n" + document.getElementById('starterText').innerText
+  ].join("\n");
+  navigator.clipboard.writeText(allText).then(()=>{
+    alert("完整 GPT 設定包已複製，可以直接貼進 ChatGPT 的自訂 GPT 介面。");
+  });
 }
-
-function addTrade(){
-let table=document.getElementById("table")
-let row=table.insertRow()
-
-row.innerHTML=`
-<td>${new Date().toLocaleDateString()}</td>
-<td>${document.getElementById("bias").innerText}</td>
-<td>${document.getElementById("entry").innerText}</td>
-<td>${document.getElementById("stop").innerText}</td>
-<td>${document.getElementById("tp").innerText}</td>
-<td onclick="editResult(this)">點擊輸入</td>
-`
-
-updateStats()
-}
-
-function editResult(cell){
-let result=prompt("輸入結果（例如 +1R / -1R）")
-cell.innerText=result
-updateStats()
-}
-
-function updateStats(){
-let table=document.getElementById("table")
-let wins=0
-let total=table.rows.length-1
-
-for(let i=1;i<table.rows.length;i++){
-let result=table.rows[i].cells[5].innerText
-if(result.includes("+")) wins++
-}
-
-document.getElementById("total").innerText=total
-document.getElementById("winRate").innerText=
-total>0 ? ((wins/total)*100).toFixed(1)+"%" : "0%"
-}
-
 </script>
-
 </body>
 </html>
